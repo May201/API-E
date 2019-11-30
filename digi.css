@@ -1,0 +1,28 @@
+.section1 {
+    background-image: url(img/digi.jpg);
+    height: 100vh;
+    background-size: cover;
+    color: #ffffff;
+    text-align: center;
+}
+
+.content {
+    padding-top: 8%;
+    margin: 0%;
+    padding-bottom: 0%;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+p1 {
+    margin-top: 0px;
+    margin-bottom: 14%;
+}
+
+.button {
+    background-color: rgb(128, 78, 13);
+    border-radius: 2px;
+    color: cornsilk;
+}
