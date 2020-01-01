@@ -1,28 +1,21 @@
 .section1 {
-    background-image: url(img/digi.jpg);
-    height: 100vh;
+    background-image: url(img/bitcoin.jpg);
+    height: auto;
     background-size: cover;
-    color: #ffffff;
     text-align: center;
+    color: aliceblue;
+    width: 100%;
+    padding: 10%;
+   
 }
 
-.content {
-    padding-top: 8%;
-    margin: 0%;
-    padding-bottom: 0%;
+h1,h2{
+    color: aliceblue;
 }
+.form-group{
+    text-align: left;
 
-h1 {
-    font-size: 3rem;
 }
-
-p1 {
-    margin-top: 0px;
-    margin-bottom: 14%;
-}
-
-.button {
-    background-color: rgb(128, 78, 13);
-    border-radius: 2px;
-    color: cornsilk;
+.section2 h2{
+    color: black;
 }
