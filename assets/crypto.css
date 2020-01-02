@@ -1,21 +1,21 @@
 .section1 {
-    background-image: url(img/bitcoin.jpg);
+    background-image: url(img/bt2.jpg);
     height: auto;
     background-size: cover;
     text-align: center;
     color: aliceblue;
-    width: 100%;
     padding: 10%;
-   
+    display: block;
+    max-width: 100%;
 }
 
-h1,h2{
+h1,
+h2 {
     color: aliceblue;
 }
-.form-group{
+.form-group {
     text-align: left;
-
 }
-.section2 h2{
+.section2 h2 {
     color: black;
 }

@@ -3,8 +3,8 @@ const apiKey =
 const apiURL =
     "https://min-api.cryptocompare.com/data/exchange/top/volume?e=Binance&direction=TO";
 const apiURLNews = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
-const CcyUrl="https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD";
-
+const currencyUrl =
+    "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD";
 
 //to get the news from the api
 
@@ -23,8 +23,7 @@ $(document).ready(function() {
                     <div class="card">
                         <h6>${element.title}</h6>
                     </div>
-                </div>
-            `;
+                </div>`;
             });
 
             if (output !== "") {
@@ -34,20 +33,23 @@ $(document).ready(function() {
     });
 });
 
-//to get cryptocurrency values
-$(document).ready(function){
+// To get cryptocurrency converted values
+$(document).ready(function() {
     $.ajax({
-        URL:CcyUrl,
-        method:'GET',
-        dataType:'JSON',
-        success: function(coin){
+        URL: currencyUrl,
+        method: "GET",
+        dataType: "JSON",
+        success: function(coin) {
+            let output = "";
+            let cryptocurrency = coin.Data;
 
-            let output="";
-            let cryptocurrency=coin.Array;
+            cryptocurrency.forEach(element => {
+                output += `<option value="">${cryptocurrency.FullName}</option>`;
+            });
 
-
-
-
-        }
-    })
-}
+            if (output !== "") {
+                $("#CryptoType").html(output);
+            }
+        },
+    });
+});
