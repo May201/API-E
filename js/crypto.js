@@ -3,8 +3,10 @@ const apiKey =
 const apiURL =
     "https://min-api.cryptocompare.com/data/exchange/top/volume?e=Binance&direction=TO";
 const apiURLNews = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
+const CcyUrl="https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD";
 
-//to get the news from the api on page load
+
+//to get the news from the api
 
 $(document).ready(function() {
     $.ajax({
@@ -31,3 +33,21 @@ $(document).ready(function() {
         },
     });
 });
+
+//to get cryptocurrency values
+$(document).ready(function){
+    $.ajax({
+        URL:CcyUrl,
+        method:'GET',
+        dataType:'JSON',
+        success: function(coin){
+
+            let output="";
+            let cryptocurrency=coin.Array;
+
+
+
+
+        }
+    })
+}
