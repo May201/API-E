@@ -9,7 +9,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="crypto.css">
     
-    <title>CryptoCurrencu Rates Calculator</title>
+    <title>CryptoCurrency Rates Calculator</title>
 </head>
 
 <body>
@@ -19,22 +19,13 @@
            <h1>CRYPTO RATES</h1>
             
 <div class="container search-wrapper">
-            <h2>Check the most current rates for the Worlds Top 10 crypto-currencies today</h2>
+            <p>Check the most current rates for the Worlds Top 10 crypto-currencies today</p>
            
             <div class="form-group">
                 
                 <select class="form-control" id="CryptoType" >
                     <option value="" disabled selected>- Select Cryptourrency - </option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
+                    
                 </select>
             </div>
            
@@ -48,18 +39,24 @@
             
             </select>
             </div>
-            <input type="submit" class="mt-5 form-control btn btn-primary" id="submitBtn" value="Search">
+            <input type="submit" class="mt-5 form-control btn btn-primary" id="submitBtn" value="Submit">
             
 </div>
     </section>
+<section class="section2">
+    <div class="container">
+        <h6 class="section2-title">LATEST NEWS </h6>
+        <div id="newsResult" class="row">
+        
+</div>
+ </div>
+        
+    
+</section>
+<!--Javascript files-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/coin.js"></script>
 
-     <section class="section2">
-        <h2 class="section2-title">LATEST NEWS </h2>
-    </section>
-
-<!--Javascript file-->
-
-<script src="js/crypto.js"></script>
 </body>
 
 </html>
