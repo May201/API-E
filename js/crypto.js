@@ -54,3 +54,13 @@ $(document).ready(function() {
         },
     });
 });
+
+//adding event listener to the submit button
+
+$("#submitBtn").click(function() {
+    let Coinresult = $("#CryptoType").val();
+});
+
+$("#submitBtn").click(function() {
+    let Ccyresult = $("#CurrencyType").val();
+});
