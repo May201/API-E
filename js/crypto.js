@@ -4,7 +4,7 @@ const apiURL =
     "https://min-api.cryptocompare.com/data/exchange/top/volume?e=Binance&direction=TO";
 const apiURLNews = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
 const currencyUrl =
-    "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD";
+    "https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=USD";
 
 //to get the news from the api
 
@@ -33,18 +33,19 @@ $(document).ready(function() {
     });
 });
 
-// To get cryptocurrency converted values
+// To get top 10 cryptocurrencies
 $(document).ready(function() {
     $.ajax({
-        URL: currencyUrl,
+        url: currencyUrl,
         method: "GET",
         dataType: "JSON",
+
         success: function(coin) {
-            let output = "";
+            let output = `<option value ="" disabled selected>- Select Cryptocurrency-</option>`;
             let cryptocurrency = coin.Data;
 
             cryptocurrency.forEach(element => {
-                output += `<option value="">${cryptocurrency.FullName}</option>`;
+                output += `<option value=" ">${element.CoinInfo.FullName}</option>`;
             });
 
             if (output !== "") {
