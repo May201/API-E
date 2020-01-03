@@ -45,7 +45,7 @@ $(document).ready(function() {
             let cryptocurrency = coin.Data;
 
             cryptocurrency.forEach(element => {
-                output += `<option value="${element.CoinInfo.Name} ">${element.CoinInfo.FullName}</option>`;
+                output += `<option value="${element.CoinInfo.Name}">${element.CoinInfo.FullName}</option>`;
             });
 
             if (output !== "") {
@@ -57,10 +57,11 @@ $(document).ready(function() {
 
 //adding event listener to the submit button
 
-$("#submitBtn").click(function() {
-    let Coinresult = $("#CryptoType").val();
-});
+$("#submitBtn").on("click", function() {
+    const coinResult = $("#CryptoType").val();
+    const ccyResult = $("#CurrencyType").val();
 
-$("#submitBtn").click(function() {
-    let Ccyresult = $("#CurrencyType").val();
+    // Example URL : "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR";
+    const modifiedRatesUrl = `https://min-api.cryptocompare.com/data/price?fsym=${coinResult}&tsyms=${ccyResult}`;
+    console.log("modifiedRatesUrl : " + modifiedRatesUrl);
 });
