@@ -19,3 +19,9 @@ h2 {
 .section2 h2 {
     color: black;
 }
+footer {
+    background-color: rgb(44, 44, 110);
+    color: aliceblue;
+    text-align: center;
+    padding: 4px;
+}
