@@ -64,4 +64,22 @@ $("#submitBtn").on("click", function() {
     // Example URL : "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR";
     const modifiedRatesUrl = `https://min-api.cryptocompare.com/data/price?fsym=${coinResult}&tsyms=${ccyResult}`;
     console.log("modifiedRatesUrl : " + modifiedRatesUrl);
+
+    //displaying result on HTML
+
+    $.ajax({
+        url: modifiedRatesUrl,
+        method: "GET",
+        dataType: "JSON",
+        success: function(result) {
+            const rateConversion = `
+                <div class="card">
+                    <h6>The rate is ${result[ccyResult]}</h6>
+                </div>`;
+
+            console.log("rate : " + result[ccyResult]);
+
+            $("#finalResult").html(rateConversion);
+        },
+    });
 });
