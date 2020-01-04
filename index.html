@@ -17,50 +17,62 @@
 
     <body>
         <section class="section1">
-            <h1>CRYPTO RATES</h1>
+            <h1 class="heading">CRYPTO RATES</h1>
 
             <div class="container search-wrapper">
-                <p>
-                    Check the most current rates for the Worlds Top 10
-                    crypto-currencies today
+                <p class="description">
+                    <strong>
+                        Check real-time rates for the Worlds Top 10
+                        crypto-currencies today.</strong
+                    >
                 </p>
 
                 <div class="form-group">
-                    <select class="form-control" id="CryptoType">
-                        <option value="" disabled selected
-                            >- Select Cryptourrency -
+                    <select class="form-control " id="CryptoType">
+                        <option value="" disabled selected>
+                            - Select Cryptourrency -
                         </option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <select class="form-control" id="CurrencyType">
-                        <option value="" disabled selected
-                            >- Select Currency -
+                        <option value="" disabled selected>
+                            - Select Currency -
                         </option>
                         <option>USD</option>
                         <option>EUR</option>
                         <option>GBP</option>
+                        <option>AUD</option>
+                        <option>SGD</option>
                     </select>
                 </div>
                 <input
                     type="submit"
-                    class="mt-5 form-control btn btn-primary"
+                    class="mt-5 form-control btn"
                     id="submitBtn"
                     value="Submit"
                 />
             </div>
+            <div id="#finalResult"></div>
         </section>
         <section class="section2">
             <div class="container">
-                <h6 class="section2-title">LATEST NEWS</h6>
+                <h3 class="section2-title">LATEST NEWS</h3>
                 <div id="newsResult" class="row"></div>
             </div>
         </section>
 
         <footer>
-            <h6>Powered by CryptoCompare</h6>
-            <h6>Copyright 2020</h6>
+            <img
+                src="assets/img/footer2.jpg"
+                class="footer-img"
+                alt="Cryptocompare logo"
+            />
+
+            <a href="https://www.cryptocompare.com/" target="_blank"
+                ><h6>Powered by CryptoCompare</h6></a
+            >
         </footer>
 
         <!--Javascript files-->
