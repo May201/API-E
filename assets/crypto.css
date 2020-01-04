@@ -13,34 +13,42 @@
 }
 .description {
     margin-bottom: 18px;
+    font-weight: 600;
 }
 .form-group {
     text-align: left;
 }
 .btn {
     background-color: rgb(16, 16, 46);
+    color: aliceblue;
+    border-color: #007bff;
 }
 .btn:hover {
     background-color: rgb(26, 26, 97);
-    border-color: #007bff;
+    font-weight: bold;
+}
+.btn:active {
+    background-color: rgb(26, 26, 97);
+    font-weight: bold;
 }
 .section2 h2 {
     color: black;
 }
+
 .section2-title {
     border-bottom: 3px solid rgb(209, 9, 9);
     padding-bottom: 4px;
     margin-top: 12px;
 }
 
-a {
+/* footer.a {
     color: aliceblue;
 }
 
 a:hover {
     color: aliceblue;
     text-decoration: none;
-}
+} */
 
 footer {
     background-color: rgb(44, 44, 110);
@@ -48,4 +56,12 @@ footer {
     text-align: center;
     padding: 8px;
     text-decoration: none;
+}
+.result {
+    background-color: rgb(32, 32, 92);
+    margin: 13px;
+    width: 70%;
+    margin-left: 14%;
+    border: 2px solid rgb(141, 16, 16);
+    color: rgb(240, 234, 234);
 }

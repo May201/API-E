@@ -21,6 +21,7 @@ $(document).ready(function() {
                 output += `
                 <div class="col-md-4 col-sm-12">
                     <div class="card">
+                    <div class="card ">
                         <h6>${element.title}</h6>
                     </div>
                 </div>`;
@@ -73,12 +74,12 @@ $("#submitBtn").on("click", function() {
         dataType: "JSON",
         success: function(result) {
             const rateConversion = `
-                <div class="card">
-                    <h6>The rate is ${result[ccyResult]}</h6>
-                </div>`;
 
-            console.log("rate : " + result[ccyResult]);
+                     <h6>The cryptocurrency rate is ${result[ccyResult]} ${ccyResult}</h6>
+                </div>
 
+
+                    `;
             $("#finalResult").html(rateConversion);
         },
     });
