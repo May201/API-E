@@ -20,9 +20,10 @@ $(document).ready(function() {
             latestNews.forEach(element => {
                 output += `
                 <div class="col-md-4 col-sm-12">
-                    <div class="card">
-                    <div class="card ">
+                    <div class="card h-100 w-100">
                         <h6>${element.title}</h6>
+                        <img src="${element.source_info.img}">
+                        <a href="${element.url}" target="_blank" class="card-link">Read more</a>
                     </div>
                 </div>`;
             });
@@ -31,7 +32,12 @@ $(document).ready(function() {
                 $("#newsResult").html(output);
             }
         },
-    });
+
+        error: function () {
+            $("#newsResult").html(
+                "The news cannot be displayed now due to an error. Please try later."
+            )
+    };
 });
 
 // To get top 10 cryptocurrencies
@@ -52,6 +58,11 @@ $(document).ready(function() {
             if (output !== "") {
                 $("#CryptoType").html(output);
             }
+        },
+        error: function() {
+            $("#CryptoType").html(
+                "The currency cannot be displayed now due to an error. Please try later."
+            );
         },
     });
 });
