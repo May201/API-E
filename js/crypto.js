@@ -77,20 +77,6 @@ $(document).ready(function() {
 
                 showNewsItemsForPage(currentPage);
             });
-            // function createPagination(nxt,prev){
-            //     if(nxt && prev ){
-            //         return `<button onclick="writeToDocument('${prev}')">Previous</button>
-            //                 <button onclick="writeToDocument('${nxt}')">Next</button>`;
-
-            //     }else if (nxt && !prev){
-            //         return `<button onclick="writeToDocument('${nxt}')">Next</button>`;
-            //     }else if (!nxt && prev){
-            //         return `< button onclick = "writeToDocument('${prev}')"> Previous</button >`;
-            //     }
-            // }
-            //             if(latestNews.next || latestNews.previous){
-            //                 pagination= createPagination(latestNews.next,latestNews.previous)
-            //             }
         },
         error: function() {
             $("#newsResult").html(
@@ -145,13 +131,12 @@ $("#submitBtn").on("click", function() {
         dataType: "JSON",
         success: function(result) {
             const rateConversion = `
-
+                <div>
                      <h6>The cryptocurrency rate is ${result[ccyResult]} ${ccyResult}</h6>
-                </div>
-
-
-                    `;
-            $("#finalResult").html(rateConversion);
+                </div>`;
+            $(".result")
+                .show()
+                .html(rateConversion);
         },
     });
 });
