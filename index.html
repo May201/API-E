@@ -21,10 +21,8 @@
 
             <div class="container search-wrapper">
                 <p class="description">
-                    <strong>
-                        Check real-time rates for the Worlds Top 10
-                        crypto-currencies today.</strong
-                    >
+                    Check real-time rates for the Worlds Top 10
+                    crypto-currencies today.
                 </p>
 
                 <div class="form-group">
@@ -54,12 +52,23 @@
                     value="Submit"
                 />
             </div>
-            <div id="#finalResult"></div>
+<div class="card result">
+    <div class="card-body" >
+            <div id="finalResult"></div>
         </section>
         <section class="section2">
             <div class="container">
-                <h3 class="section2-title">LATEST NEWS</h3>
-                <div id="newsResult" class="row"></div>
+                <h4 class="section2-title">LATEST CRYPTOCURRENCY NEWS</h4>
+
+                <!--Pagination-->
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                   </ul>
+                </nav>
+
+                <div id="newsResult" class="row loop"></div>
             </div>
         </section>
 
