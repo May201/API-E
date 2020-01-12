@@ -6,6 +6,28 @@ const apiURLNews = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
 const currencyUrl =
     "https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=USD";
 
+const pageSize = 3;
+
+function showNewsItemsForPage(pageIndex) {
+    // Removing the "active" class from all of the paginatione elements
+    $(".pagination li").removeClass("active");
+
+    // Add the "active" class to the currently clicked element
+    $(this).addClass("active");
+
+    // Calculate the start and end index for the current page
+    const currentPageStartIndex = pageIndex * pageSize - 1;
+    const currentPageEndIndex = currentPageStartIndex + pageSize;
+
+    // Hide all the loaded news elements
+    $("#newsResult .news-item").hide();
+
+    // Show only the elements for the currently selected page
+    for (let i = currentPageStartIndex; i < currentPageEndIndex; i++) {
+        $(`#newsResult .news-item:eq(${i})`).show();
+    }
+}
+
 //to get the news from the api
 $(document).ready(function() {
     $.ajax({
@@ -34,7 +56,6 @@ $(document).ready(function() {
 
             //pagination
             const numberofItems = $("#newsResult").children().length;
-            const pageSize = 3;
 
             $(`#newsResult .news-item:gt(${pageSize - 1})`).hide();
 
@@ -51,30 +72,10 @@ $(document).ready(function() {
             </li>`);
 
             $(".pagination li").on("click", function() {
-                // Removing the "active" class from all of the paginatione elements
-                $(".pagination li").removeClass("active");
-
-                // Add the "active" class to the currently clicked element
-                $(this).addClass("active");
-
                 // Current selected page number
                 const currentPage = $(this).index();
 
-                // Calculate the start and end index for the current page
-                const currentPageStartIndex = currentPage * pageSize - 1;
-                const currentPageEndIndex = currentPageStartIndex + pageSize;
-
-                // Hide all the loaded news elements
-                $("#newsResult .news-item").hide();
-
-                // Show only the elements for the currently selected page
-                for (
-                    let i = currentPageStartIndex;
-                    i < currentPageEndIndex;
-                    i++
-                ) {
-                    $(`#newsResult .news-item:eq(${i})`).show();
-                }
+                showNewsItemsForPage(currentPage);
             });
             // function createPagination(nxt,prev){
             //     if(nxt && prev ){
