@@ -6,7 +6,7 @@ const apiURLNews = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
 const currencyUrl =
     "https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=USD";
 
-const pageSize = 3;
+const pageSize = 4;
 
 function showNewsItemsForPage(pageIndex) {
     // Removing the "active" class from all of the paginatione elements
@@ -41,11 +41,12 @@ $(document).ready(function() {
             let latestNews = news.Data;
             latestNews.forEach(element => {
                 output += `
-                <div class="col-md-4 col-sm-12 news-item">
+                <div class="col-lg-3 col-md-6 col-sm-12 news-item">
                     <div class="card h-100 w-100">
-                        <h6>${element.title}</h6>
-                        <img src="${element.source_info.img}">
-                        <a href="${element.url}" target="_blank" class="card-link">Read more</a>
+                        <a href="${element.url}" target="_blank" "style="text-decoration: 15rem;"><h6 class="card-title"> ${element.title}</h6></a>
+
+                        <img class="card-img-bottom" src="${element.source_info.img}"style="height: 17rem;" >
+
                     </div>
                 </div>`;
             });
