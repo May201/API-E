@@ -47,14 +47,17 @@
                 </div>
 
                 <div class="btn-group btn-group-md ">
-                    <button
-                        type="button"
-                        class="btn btn-primary"
-                        id="submitBtn"
-                    >
+                    <button type="button" class="btn " id="submitBtn">
                         Submit
                     </button>
-                    <button type="button" class="btn mx-3">Reset</button>
+                    <button
+                        type="reset"
+                        value="reset"
+                        class="btn mx-3"
+                        id="clearBtn"
+                    >
+                        Reset
+                    </button>
                     <!-- <input
                     type="submit"
                     class="mt-5 form-control btn"
@@ -77,7 +80,11 @@
                     </ul>
                 </nav>
 
-                <div id="newsResult" class="row loop"></div>
+                <div id="newsResult" class="row loop">
+                    <div class="col-md-3 col-sm-12 news-item">
+                        <div class="card h-100 w-100"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
