@@ -119,6 +119,13 @@ $("#submitBtn").on("click", function() {
     const coinResult = $("#CryptoType").val();
     const ccyResult = $("#CurrencyType").val();
 
+    //adding event listner to the clear button
+    $("#clearBtn").on("click", function() {
+        $("#CryptoType").val("");
+        $("#CurrencyType").val("");
+        $(".result").hide();
+    });
+
     // Example URL : "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR";
     const modifiedRatesUrl = `https://min-api.cryptocompare.com/data/price?fsym=${coinResult}&tsyms=${ccyResult}`;
     console.log("modifiedRatesUrl : " + modifiedRatesUrl);
