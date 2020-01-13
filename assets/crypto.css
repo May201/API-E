@@ -1,10 +1,10 @@
 .section1 {
     background-image: url(img/bt2.jpg);
-    height: auto;
+    height: 80%;
     background-size: cover;
     text-align: center;
     color: aliceblue;
-    padding: 8%;
+    padding: 5%;
     display: block;
     max-width: 100%;
 }
@@ -27,10 +27,7 @@
     background-color: rgb(26, 26, 97);
     font-weight: bold;
 }
-.btn:active {
-    background-color: rgb(26, 26, 97);
-    font-weight: bold;
-}
+
 .section2 h2 {
     color: black;
 }
@@ -64,4 +61,13 @@ footer {
     margin-left: 14%;
     border: 2px solid rgb(141, 16, 16);
     color: rgb(240, 234, 234);
+    display: none;
+}
+.card {
+    height: 100;
+    width: 100;
+}
+a {
+    text-decoration: none;
+    color: black;
 }
