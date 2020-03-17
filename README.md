@@ -2,7 +2,11 @@
 
 This project aims to provide a quick reference to find the conversion of crypto currencies to fiat currencies. The currency values are provided by a 3rd party service - cryptocompare.com
 
-This app has only one page and organises data into different parts:
+Cryptocompare provides a public API service with which 100,000 free API calls per month can be made. It also provides 60 plus market data endpoints under this plan.
+
+## Features
+
+This is a single page web app and organises data into different parts:
 
 - Currency Conversion
 - Crypto related News
@@ -11,9 +15,23 @@ This app has only one page and organises data into different parts:
 
 This section consists of a form to capture the combination of crypto and fiat currency like (BTC, USD). Clicking the `Submit` button will invoke the API from the 3rd party service and display the availabel conversion rate.
 
+A `reset` button has also been used to allow the user to empty the existing values in the fields.
+
+A `timer` has been added for the displayed result.The displayed conversion values dissapear in 5 seconds after display of the user result.
+
 ## Crypto related News
 
 There are rapid changes happening the crypto space and the 3rd party service provides an API to get the top news in the crypto space. This section displays the top 4 news stories.
+
+## User Stories
+
+As a user I am looking for the value of cryptocurrencies.
+
+As a user I am am investor looking for the market value of cryptocurrency values to book my trades.
+
+As a user I am browsing for random crptocurrency information and related news.
+
+As a user I am looking for the top current crytocurrencies in the market today.
 
 ## Code Organization
 
@@ -23,7 +41,7 @@ A `.gitignore` file has been added to prevent any VSCode settings from being inc
 
 ### External libraries
 
-- `bootstrap` framework has been used for managing the CSS features and for having baseline styles applied.
+- `Bootstrap` framework has been used for managing the CSS features and for having baseline styles applied.
 
 - `jquery` library has been used to simplify the operations on the DOM and also as a dependency for the CSS framework.
 
@@ -34,3 +52,9 @@ Unit tests have been included to verify the changes introduced by different acti
 ### Structure
 
 To test the DOM changes, a new DIV element with id `test-container` is injected for each unit test and any DOM elements required for a test are injected into this element. After a test is over, this test container is removed. This makes sure that any DOM changes introduced in one test does not affect other tests. A helper method has been addded to the test suite to make it add test DOM elements easily.
+
+### Acknowledgments
+
+Special thanks to my mentor and my family for their support .
+
+This project is for educational purposes only.
