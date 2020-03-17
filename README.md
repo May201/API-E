@@ -1,4 +1,4 @@
-# Crypto Currency Converter
+# [Crypto Currency Rates Calculator](https://may201.github.io/CryptoCurrency-rates-Calculator/)
 
 This project aims to provide a quick reference to find the conversion of crypto currencies to fiat currencies. The currency values are provided by a 3rd party service - cryptocompare.com
 
@@ -21,7 +21,7 @@ A `timer` has been added for the displayed result.The displayed conversion value
 
 ## Crypto related News
 
-There are rapid changes happening the crypto space and the 3rd party service provides an API to get the top news in the crypto space. This section displays the top 4 news stories.
+There are rapid changes happening the crypto space and the 3rd party service provides an API to get the top news in the crypto space. This section displays the top 4 news stories for the hour related to cryptocurrencies.
 
 ## User Stories
 
@@ -47,11 +47,17 @@ A `.gitignore` file has been added to prevent any VSCode settings from being inc
 
 ## Testing
 
-Unit tests have been included to verify the changes introduced by different actions and API calls. `jasmine` has been used for this project and the `spec` file is available in the `js/spec` folder. An HTML page is available in the same folder that links the required `jasmine` dependencies imported from a CDN. The `spec` and source files are included in this HTML file. Tests will be executed when opening `js/spec/index.html` file.
+Unit tests have been included to verify the changes introduced by different actions and API calls. `jasmine` has been used for this project and the `spec` file is available in the `js/spec` folder. An HTML page is available in the same folder that links the required `jasmine` dependencies imported from a CDN. The `spec` and source files are included in this HTML file. Tests will be executed when opening [`js/spec/index.html` file](https://may201.github.io/CryptoCurrency-rates-Calculator/js/spec/index.html)
 
 ### Structure
 
 To test the DOM changes, a new DIV element with id `test-container` is injected for each unit test and any DOM elements required for a test are injected into this element. After a test is over, this test container is removed. This makes sure that any DOM changes introduced in one test does not affect other tests. A helper method has been addded to the test suite to make it add test DOM elements easily.
+
+## Deployment
+
+The website was deployed by choosing the master branch under the Github pages in the settings option of the project repository.The deployed link can be found [here](https://may201.github.io/CryptoCurrency-rates-Calculator/)
+
+To run locally, clone repo directly by passing git clone command ,onto the terminal.
 
 ### Acknowledgments
 
