@@ -53,6 +53,10 @@ function displayRateConversion(result) {
   $(".result")
     .show()
     .html(rateConversion);
+
+  setTimeout(function() {
+    $(".result").hide();
+  }, 5000);
 }
 
 //to get the news from the api
