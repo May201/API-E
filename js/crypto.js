@@ -24,7 +24,6 @@ function showNewsItemsForPage(pageIndex) {
 
 function displayNews(news) {
   let output = "";
-  // let pagination;
 
   let latestNews = news.Data;
   latestNews.forEach(element => {
@@ -124,11 +123,7 @@ function clearBtnHandler() {
   $(".result").hide();
 }
 
-// adding event listner to the clear button
-$("#clearBtn").on("click", clearBtnHandler);
-
-//adding event listener to the submit button
-$("#submitBtn").on("click", function() {
+function submitBtnHandler() {
   const coinResult = $("#CryptoType").val();
   const ccyResult = $("#CurrencyType").val();
 
@@ -150,4 +145,10 @@ $("#submitBtn").on("click", function() {
       displayRateConversion(result);
     }
   });
-});
+}
+
+// adding event listner to the clear button
+$("#clearBtn").on("click", clearBtnHandler);
+
+//adding event listener to the submit button
+$("#submitBtn").on("click", submitBtnHandler);
