@@ -131,6 +131,12 @@ $("#submitBtn").on("click", function() {
   const coinResult = $("#CryptoType").val();
   const ccyResult = $("#CurrencyType").val();
 
+  // Check if both inputs are available
+  if (coinResult === null || ccyResult === null) {
+    alert("Please choose both values!");
+    return;
+  }
+
   //adding event listner to the clear button
   $("#clearBtn").on("click", function() {
     $("#CryptoType").val("");
