@@ -29,13 +29,13 @@ function displayNews(news) {
   let latestNews = news.Data;
   latestNews.forEach(element => {
     output += `
-          <div class="col-lg-3 col-md-6 col-sm-12 news-item">
-            <div class="card h-100 w-100">
-              <a href="${element.url}" target="_blank" "style="text-decoration: 15rem;">
-              <h6 class="card-title"> ${element.title}</h6></a>
-              <img class="card-img-bottom" src="${element.source_info.img}"style="height: 17rem;">
-            </div>
-          </div>`;
+      <div class="col-lg-3 col-md-6 col-sm-12 news-item">
+        <div class="card h-100 w-100">
+          <a href="${element.url}" target="_blank" "style="text-decoration: 15rem;">
+          <h6 class="card-title"> ${element.title}</h6></a>
+          <img class="card-img-bottom" src="${element.source_info.img}"style="height: 17rem;">
+        </div>
+      </div>`;
   });
 
   if (output !== "") {
@@ -48,14 +48,6 @@ function displayNews(news) {
   $(`#newsResult .news-item:gt(${pageSize - 1})`).hide(); // hide all items over page limit
 
   const totalPages = Math.ceil(numberofItems / pageSize);
-
-  // $(".pagination").append(`<li class="page-item">
-  //       <a class="page-link" href="#">Next</a>
-  //   </li>`);
-
-  // $(".pagination").append(`<li class="page-item">
-  //       <a class="page-link" href="#">Previous</a>
-  //   </li>`);
 
   $("#Next").on("click", function() {
     // Current selected page number
@@ -84,9 +76,10 @@ function fetchCryptoCurrencies(coin) {
 function displayRateConversion(result) {
   const ccyResult = $("#CurrencyType").val();
   const rateConversion = `
-        <div>
-          <h6>The cryptocurrency rate is ${result[ccyResult]} ${ccyResult}</h6>
-        </div>`;
+    <div>
+      <h6>The cryptocurrency rate is ${result[ccyResult]} ${ccyResult}</h6>
+    </div>`;
+
   $(".result")
     .show()
     .html(rateConversion);
@@ -125,8 +118,16 @@ $(document).ready(function() {
   });
 });
 
-//adding event listener to the submit button
+function clearBtnHandler() {
+  $("#CryptoType").val("");
+  $("#CurrencyType").val("");
+  $(".result").hide();
+}
 
+// adding event listner to the clear button
+$("#clearBtn").on("click", clearBtnHandler);
+
+//adding event listener to the submit button
 $("#submitBtn").on("click", function() {
   const coinResult = $("#CryptoType").val();
   const ccyResult = $("#CurrencyType").val();
@@ -137,16 +138,8 @@ $("#submitBtn").on("click", function() {
     return;
   }
 
-  //adding event listner to the clear button
-  $("#clearBtn").on("click", function() {
-    $("#CryptoType").val("");
-    $("#CurrencyType").val("");
-    $(".result").hide();
-  });
-
   // Example URL : "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR";
   const modifiedRatesUrl = `https://min-api.cryptocompare.com/data/price?fsym=${coinResult}&tsyms=${ccyResult}`;
-  console.log("modifiedRatesUrl : " + modifiedRatesUrl);
 
   //displaying result on HTML
   $.ajax({
