@@ -46,15 +46,6 @@
   margin-top: 12px;
 }
 
-/* footer.a {
-    color: aliceblue;
-}
-
-a:hover {
-    color: aliceblue;
-    text-decoration: none;
-} */
-
 footer {
   background-color: rgb(44, 44, 110);
   color: aliceblue;
@@ -81,14 +72,4 @@ footer {
 a {
   text-decoration: none;
   color: black;
-}
-
-.prev,
-.next {
-  border: 1px solid black;
-  padding: 0.5rem;
-}
-
-.prev {
-  visibility: hidden;
 }
