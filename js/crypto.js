@@ -8,20 +8,6 @@ const currencyUrl =
 
 const pageSize = 4; // limit of news item for each page
 
-function showNewsItemsForPage(pageIndex) {
-  // Calculate the start and end index for the current page
-  const currentPageStartIndex = pageIndex * pageSize - 1;
-  const currentPageEndIndex = currentPageStartIndex + pageSize;
-
-  // Hide all the loaded news elements
-  $("#newsResult .news-item").hide();
-
-  // Show only the elements for the currently selected page
-  for (let i = currentPageStartIndex; i < currentPageEndIndex; i++) {
-    $(`#newsResult .news-item:eq(${i})`).show();
-  }
-}
-
 function displayNews(news) {
   let output = "";
 
@@ -41,22 +27,7 @@ function displayNews(news) {
     $("#newsResult").html(output);
   }
 
-  //pagination
-  const numberofItems = $("#newsResult").length; // to get total number of items that should be paginated
-
   $(`#newsResult .news-item:gt(${pageSize - 1})`).hide(); // hide all items over page limit
-
-  const totalPages = Math.ceil(numberofItems / pageSize);
-
-  $("#Next").on("click", function() {
-    // Current selected page number
-    for (i = 1; i <= totalPages; i + 4) {
-      latestNews.slice(4);
-    }
-    const currentPage = $(this).index();
-
-    showNewsItemsForPage(currentPage);
-  });
 }
 
 function fetchCryptoCurrencies(coin) {
