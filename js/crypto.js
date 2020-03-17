@@ -1,150 +1,129 @@
 const apiKey =
-    "7281d41481632ac57ab5f3c97ce31de1fea0d2dad356cd2ffa71b4e2f0ec2256";
+  "7281d41481632ac57ab5f3c97ce31de1fea0d2dad356cd2ffa71b4e2f0ec2256";
 const ratesUrl =
-    "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR";
+  "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR";
 const apiURLNews = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
 const currencyUrl =
-    "https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=USD";
+  "https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=USD";
 
-const pageSize = 4;
+const pageSize = 4; // limit of news item for each page
 
-function showNewsItemsForPage(pageIndex) {
-    // Removing the "active" class from all of the paginatione elements
-    $(".pagination li").removeClass("active");
+function displayNews(news) {
+  let output = "";
 
-    // Add the "active" class to the currently clicked element
-    $(this).addClass("active");
+  let latestNews = news.Data;
+  latestNews.forEach(element => {
+    output += `
+      <div class="col-lg-3 col-md-6 col-sm-12 news-item">
+        <div class="card h-100 w-100">
+          <a href="${element.url}" target="_blank" "style="text-decoration: 15rem;">
+          <h6 class="card-title"> ${element.title}</h6></a>
+          <img class="card-img-bottom" src="${element.source_info.img}"style="height: 17rem;">
+        </div>
+      </div>`;
+  });
 
-    // Calculate the start and end index for the current page
-    const currentPageStartIndex = pageIndex * pageSize - 1;
-    const currentPageEndIndex = currentPageStartIndex + pageSize;
+  if (output !== "") {
+    $("#newsResult").html(output);
+  }
 
-    // Hide all the loaded news elements
-    $("#newsResult .news-item").hide();
+  $(`#newsResult .news-item:gt(${pageSize - 1})`).hide(); // hide all items over page limit
+}
 
-    // Show only the elements for the currently selected page
-    for (let i = currentPageStartIndex; i < currentPageEndIndex; i++) {
-        $(`#newsResult .news-item:eq(${i})`).show();
-    }
+function fetchCryptoCurrencies(coin) {
+  let output = `<option value ="" disabled selected>- Select Cryptocurrency-</option>`;
+  let cryptocurrency = coin.Data;
+
+  cryptocurrency.forEach(element => {
+    output += `<option value="${element.CoinInfo.Name}">${element.CoinInfo.FullName}</option>`;
+  });
+
+  if (output !== "") {
+    $("#CryptoType").html(output);
+  }
+}
+
+function displayRateConversion(result) {
+  const ccyResult = $("#CurrencyType").val();
+  const rateConversion = `
+    <div>
+      <h6>The cryptocurrency rate is ${result[ccyResult]} ${ccyResult}</h6>
+    </div>`;
+
+  $(".result")
+    .show()
+    .html(rateConversion);
+
+  setTimeout(function() {
+    $(".result").hide();
+  }, 5000);
 }
 
 //to get the news from the api
 $(document).ready(function() {
-    $.ajax({
-        url: apiURLNews,
-        method: "GET",
-        dataType: "JSON",
-        success: function(news) {
-            let output = "";
-            // let pagination;
+  $.ajax({
+    url: apiURLNews,
+    method: "GET",
+    dataType: "JSON",
+    success: function(news) {
+      displayNews(news);
+    },
+    error: function() {
+      $("#newsResult").html(
+        "The news cannot be displayed now due to an error. Please try later."
+      );
+    }
+  });
 
-            let latestNews = news.Data;
-            latestNews.forEach(element => {
-                output += `
-                <div class="col-lg-3 col-md-6 col-sm-12 news-item">
-                    <div class="card h-100 w-100">
-                        <a href="${element.url}" target="_blank" "style="text-decoration: 15rem;"><h6 class="card-title"> ${element.title}</h6></a>
+  // To get top 10 cryptocurrencies
+  $.ajax({
+    url: currencyUrl,
+    method: "GET",
+    dataType: "JSON",
 
-                        <img class="card-img-bottom" src="${element.source_info.img}"style="height: 17rem;" >
-
-                    </div>
-                </div>`;
-            });
-
-            if (output !== "") {
-                $("#newsResult").html(output);
-            }
-
-            //pagination
-            const numberofItems = $("#newsResult").children().length;
-
-            $(`#newsResult .news-item:gt(${pageSize - 1})`).hide();
-
-            const totalPages = Math.ceil(numberofItems / pageSize);
-
-            for (i = 1; i <= totalPages; i++) {
-                $(".pagination").append(`<li class="page-item">
-                    <a class="page-link" href="#"> ${i} </a>
-                </li>`);
-            }
-
-            $(".pagination").append(`<li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>`);
-
-            $(".pagination li").on("click", function() {
-                // Current selected page number
-                const currentPage = $(this).index();
-
-                showNewsItemsForPage(currentPage);
-            });
-        },
-        error: function() {
-            $("#newsResult").html(
-                "The news cannot be displayed now due to an error. Please try later."
-            );
-        },
-    });
+    success: function(coin) {
+      fetchCryptoCurrencies(coin);
+    },
+    error: function() {
+      $("#CryptoType").html(
+        "The currency cannot be displayed now due to an error. Please try later."
+      );
+    }
+  });
 });
 
-// To get top 10 cryptocurrencies
-$(document).ready(function() {
-    $.ajax({
-        url: currencyUrl,
-        method: "GET",
-        dataType: "JSON",
+function clearBtnHandler() {
+  $("#CryptoType").val("");
+  $("#CurrencyType").val("");
+  $(".result").hide();
+}
 
-        success: function(coin) {
-            let output = `<option value ="" disabled selected>- Select Cryptocurrency-</option>`;
-            let cryptocurrency = coin.Data;
+function submitBtnHandler() {
+  const coinResult = $("#CryptoType").val();
+  const ccyResult = $("#CurrencyType").val();
 
-            cryptocurrency.forEach(element => {
-                output += `<option value="${element.CoinInfo.Name}">${element.CoinInfo.FullName}</option>`;
-            });
+  // Check if both inputs are available
+  if (coinResult === null || ccyResult === null) {
+    alert("Please choose both values!");
+    return;
+  }
 
-            if (output !== "") {
-                $("#CryptoType").html(output);
-            }
-        },
-        error: function() {
-            $("#CryptoType").html(
-                "The currency cannot be displayed now due to an error. Please try later."
-            );
-        },
-    });
-});
+  // Example URL : "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR";
+  const modifiedRatesUrl = `https://min-api.cryptocompare.com/data/price?fsym=${coinResult}&tsyms=${ccyResult}`;
+
+  //displaying result on HTML
+  $.ajax({
+    url: modifiedRatesUrl,
+    method: "GET",
+    dataType: "JSON",
+    success: function(result) {
+      displayRateConversion(result);
+    }
+  });
+}
+
+// adding event listner to the clear button
+$("#clearBtn").on("click", clearBtnHandler);
 
 //adding event listener to the submit button
-
-$("#submitBtn").on("click", function() {
-    const coinResult = $("#CryptoType").val();
-    const ccyResult = $("#CurrencyType").val();
-
-    //adding event listner to the clear button
-    $("#clearBtn").on("click", function() {
-        $("#CryptoType").val("");
-        $("#CurrencyType").val("");
-        $(".result").hide();
-    });
-
-    // Example URL : "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR";
-    const modifiedRatesUrl = `https://min-api.cryptocompare.com/data/price?fsym=${coinResult}&tsyms=${ccyResult}`;
-    console.log("modifiedRatesUrl : " + modifiedRatesUrl);
-
-    //displaying result on HTML
-
-    $.ajax({
-        url: modifiedRatesUrl,
-        method: "GET",
-        dataType: "JSON",
-        success: function(result) {
-            const rateConversion = `
-                <div>
-                     <h6>The cryptocurrency rate is ${result[ccyResult]} ${ccyResult}</h6>
-                </div>`;
-            $(".result")
-                .show()
-                .html(rateConversion);
-        },
-    });
-});
+$("#submitBtn").on("click", submitBtnHandler);
